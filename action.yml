@@ -18,6 +18,15 @@ inputs:
     description: Message to use when commiting
     required: false
     default: Update to ${package_version}
+  aur_private_key:
+    description: SSH private key with write permissions to AUR Git
+    required: true
+  aur_username:
+    description: Username to configure the AUR Git with
+    required: true
+  aur_email:
+    description: Email to configure the AUR Git with
+    required: true
   skip_test:
     description: Flag if testing has to be skipped
     required: false

@@ -9,7 +9,7 @@ cd /root
 echo "Setting up ssh"
 ssh-keyscan -v -t ed25519 aur.archlinux.org >> .ssh/known_hosts
 
-echo -e "${INPUT_SSH_PRIVATE_KEY//_/\\n}" > .ssh/aur
+echo -e "${INPUT_AUR_PRIVATE_KEY//_/\\n}" > .ssh/aur
 
 chmod -vR 600 .ssh/aur*
 
@@ -18,8 +18,8 @@ ssh-keygen -vy -f .ssh/aur > .ssh/aur.pub
 sha512sum .ssh/aur .ssh/aur.pub
 
 echo "Setting up git"
-git config --global user.name "${INPUT_GIT_USERNAME}"
-git config --global user.email "${INPUT_GIT_EMAIL}"
+git config --global user.name "${INPUT_AUR_USERNAME}"
+git config --global user.email "${INPUT_AUR_EMAIL}"
 git config --global --add safe.directory "/home/builder/${INPUT_PACKAGE_NAME}"
 
 cd /home/builder

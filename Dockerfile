@@ -1,4 +1,4 @@
-FROM archlinux/archlinux:base
+FROM archlinux/archlinux:base-devel
 
 RUN \
 	# install dependencies
