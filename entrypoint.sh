@@ -78,8 +78,16 @@ if [[ "$changes" == "yes" ]]; then
     git add -fv PKGBUILD .SRCINFO
 
     if [[ "${INPUT_SKIP_TEST}" != "yes" ]]; then
+        echo "Installing dependencies"
+        while IFS='= ' read -r KEY VALUE
+        do
+          if [[ "${KEY/[[:space:]]/}" == "makedepends" ]]; then
+            su builder -c "yay --sync --needed --noconfirm --noprogressbar '${VALUE}'"
+          fi
+        done < .SRCINFO
+
         echo "Testing package"
-        su builder -c "GITHUB_ENV='' makepkg --noconfirm -s -c"
+        su builder -c "GITHUB_ENV='' makepkg --noconfirm --syncdeps --clean"
     else
         echo "Skipping testing"
     fi
