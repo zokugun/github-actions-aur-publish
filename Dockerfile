@@ -1,8 +1,8 @@
-FROM archlinux/archlinux:base-devel
+FROM archlinux/archlinux:base-devel-20230423.0.144989
 
 RUN \
 	# install dependencies
-	pacman --needed --noconfirm -Syu base base-devel core/systemd pacman-contrib git openssh jq && \
+	pacman --needed --noconfirm -Syu base base-devel pacman-contrib git openssh jq && \
 	\
 	# add user
 	useradd -m builder && \
