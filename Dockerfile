@@ -1,4 +1,4 @@
-FROM archlinux/archlinux:base-devel-20230423.0.144989
+FROM archlinux/archlinux:base-devel
 
 RUN \
 	# install dependencies
